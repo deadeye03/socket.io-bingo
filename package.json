@@ -5,11 +5,17 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "build": "echo 'Build script executed'",
+    "test": "echo 'Tests executed'"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "socket.io": "^4.8.1"
+  },
+  "engines": {
+    "node": "20.x"
   }
 }

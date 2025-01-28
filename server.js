@@ -2,15 +2,18 @@ import express from "express"
 import { createServer } from "node:http"
 import { Server } from "socket.io"
 import dotenv from "dotenv"
-dotenv.config()
+dotenv.config() 
 const app = express()
 const server = createServer(app)
+console.log(process.env.NEXT_PUBLIC_URL)
 const io = new Server(server, {
   cors: {
     origin: process.env.NEXT_PUBLIC_URL, // Remove the trailing slash
     methods: ["GET", "POST"],
   },
 })
+
+// console.log(io)
 
 
 io.on("connection", (socket) => {
@@ -85,7 +88,7 @@ io.on("connection", (socket) => {
 
 
 const port = process.env.PORT || 3001;
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 

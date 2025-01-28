@@ -1,7 +1,8 @@
 import express from "express"
 import { createServer } from "node:http"
 import { Server } from "socket.io"
-
+import dotenv from "dotenv"
+dotenv.config()
 const app = express()
 const server = createServer(app)
 const io = new Server(server, {
@@ -81,7 +82,10 @@ io.on("connection", (socket) => {
   })
 })
 
-server.listen(3001, () => {
-  console.log("server running at http://localhost:3001")
-})
+
+
+const port = process.env.PORT || 3001;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
 
